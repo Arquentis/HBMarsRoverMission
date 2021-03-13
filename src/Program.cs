@@ -22,7 +22,7 @@ namespace Hb_mars_rover
                 {
                     if (args == null) return;
                     var data = (BeforeRoverChangedArgs)args;
-                    Console.WriteLine($"{data.Rover.Name} last position is {data.Rover.ToString()}");
+                    Console.WriteLine($"{data.Rover.ToString()}");
                 };
                 // mission.RoverCommandExecuted += (obj, args) =>
                 // {
