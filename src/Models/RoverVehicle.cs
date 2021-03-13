@@ -4,43 +4,42 @@ namespace Hb_mars_rover
 {
     public class RoverVehicle
     {
-        private int _rotation;
-        public int Rotation
+        private Rotation _rotation = new Rotation();
+        public Rotation Rotation => _rotation;
+
+        private Coordinate _coordinate = new Coordinate();
+        public Coordinate Coordinate => _coordinate;
+        public string Name { get; }
+        private bool _isCrashed = false;
+        public bool IsCrashed => _isCrashed;
+
+        public RoverVehicle()
         {
-            get { return _rotation; }
-            private set { _rotation = value % 360; }
+            Name = "Rover";
+        }
+        public RoverVehicle(string name)
+        {
+            Name = name;
         }
 
-        private int _x;
-        public int X
-        {
-            get { return _x; }
-            private set { _x = value; }
-        }
-
-        private int _y;
-        public int Y
-        {
-            get { return _y; }
-            private set { _y = value; }
-        }
-
+        public void SetInitialCoords(Coordinate coordinate) => _coordinate = coordinate;
+        public void SetInitialRotation(Rotation rotation) => _rotation = rotation;
         public void Move()
         {
-            var direction = GetDirectionHeading();
+            var direction = Rotation.GetDirection();
             switch (direction)
             {
                 case "N":
-                    Y += 1;
+                    _coordinate = Coordinate.SetY(Coordinate.Y + 1);
                     break;
                 case "S":
-                    Y -= 1;
+                    _coordinate = Coordinate.SetY(Coordinate.Y - 1);
                     break;
                 case "E":
-                    X += 1;
+                    _coordinate = Coordinate.SetX(Coordinate.X + 1);
                     break;
                 case "W":
-                    X -= 1;
+                    _coordinate = Coordinate.SetX(Coordinate.X - 1);
                     break;
                 default:
                     throw new ArgumentException("Invalid Direction");
@@ -52,41 +51,25 @@ namespace Hb_mars_rover
             switch (direction)
             {
                 case RotationDirection.L:
-                    Rotation -= 90;
+                    _rotation = Rotation.AddDegree(-90);
                     break;
                 case RotationDirection.R:
-                    Rotation += 90;
+                    _rotation = Rotation.AddDegree(+90);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("Invalid Rotation");
             }
         }
-        public string GetDirectionHeading()
-        {
-            // total 
-            switch (Rotation)
-            {
-                case 0: return "N";
-                case 90:
-                case -270:
-                    return "E";
-                case 180:
-                case -180:
-                    return "S";
-                case 270:
-                case -90:
-                    return "W";
-                default:
-                    return "<invalid-heading>";
-            }
-        }
 
+        public void Crash() => this._isCrashed = true;
 
         public override string ToString()
         {
-            return $"{X} {Y} {GetDirectionHeading()}";
+            if (_isCrashed)
+            {
+                return $"{Name} is crashed. Last coords: {Coordinate.ToString()} {Rotation.GetDirection()}";
+            }
+            return $"{Name} - {Coordinate.ToString()} {Rotation.GetDirection()}";
         }
-
-
     }
 }

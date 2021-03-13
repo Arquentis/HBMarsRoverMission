@@ -14,7 +14,7 @@ namespace HbMarsRoverTests
             // Act
 
             // Assert
-            Assert.Equal("N", myRover.GetDirectionHeading());
+            Assert.Equal("N", myRover.Rotation.GetDirection());
         }
 
         [Fact]
@@ -27,8 +27,8 @@ namespace HbMarsRoverTests
             myRover.Rotate(RotationDirection.R);
 
             // Assert
-            Assert.Equal("E", myRover.GetDirectionHeading());
-            Assert.Equal(90, myRover.Rotation);
+            Assert.Equal("E", myRover.Rotation.GetDirection());
+            Assert.Equal(90, myRover.Rotation.Degree);
         }
 
         [Fact]
@@ -41,8 +41,8 @@ namespace HbMarsRoverTests
             myRover.Rotate(RotationDirection.L);
 
             // Assert
-            Assert.Equal("W", myRover.GetDirectionHeading());
-            Assert.Equal(-90, myRover.Rotation);
+            Assert.Equal("W", myRover.Rotation.GetDirection());
+            Assert.Equal(-90, myRover.Rotation.Degree);
         }
 
         [Fact]
@@ -56,8 +56,8 @@ namespace HbMarsRoverTests
             myRover.Rotate(RotationDirection.L);
 
             // Assert
-            Assert.Equal("S", myRover.GetDirectionHeading());
-            Assert.Equal(-180, myRover.Rotation);
+            Assert.Equal("S", myRover.Rotation.GetDirection());
+            Assert.Equal(-180, myRover.Rotation.Degree);
         }
 
         [Fact]
@@ -71,8 +71,8 @@ namespace HbMarsRoverTests
             myRover.Rotate(RotationDirection.R);
 
             // Assert
-            Assert.Equal("S", myRover.GetDirectionHeading());
-            Assert.Equal(180, myRover.Rotation);
+            Assert.Equal("S", myRover.Rotation.GetDirection());
+            Assert.Equal(180, myRover.Rotation.Degree);
         }
 
         [Fact]
@@ -85,10 +85,10 @@ namespace HbMarsRoverTests
             myRover.Move();
 
             // Assert
-            Assert.Equal("N", myRover.GetDirectionHeading());
-            Assert.Equal(0, myRover.Rotation);
-            Assert.Equal(1, myRover.Y);
-            Assert.Equal("0 1 N", myRover.ToString());
+            Assert.Equal("N", myRover.Rotation.GetDirection());
+            Assert.Equal(0, myRover.Rotation.Degree);
+            Assert.Equal(1, myRover.Coordinate.Y);
+            Assert.Equal($"{myRover.Name} - 0 1 N", myRover.ToString());
         }
 
         [Fact]
@@ -102,10 +102,10 @@ namespace HbMarsRoverTests
             myRover.Move();
 
             // Assert
-            Assert.Equal("E", myRover.GetDirectionHeading());
-            Assert.Equal(90, myRover.Rotation);
-            Assert.Equal(1, myRover.X);
-            Assert.Equal("1 0 E", myRover.ToString());
+            Assert.Equal("E", myRover.Rotation.GetDirection());
+            Assert.Equal(90, myRover.Rotation.Degree);
+            Assert.Equal(1, myRover.Coordinate.X);
+            Assert.Equal($"{myRover.Name} - 1 0 E", myRover.ToString());
         }
     }
 }
