@@ -10,10 +10,6 @@ namespace Hb_mars_rover
             {
                 Console.WriteLine("Write 'exit' or 'e' to exit");
                 var mission = new MarsMission();
-                mission.Start(
-                    new RoverVehicle("Opportunity"),
-                    new RoverVehicle("Curiosity")
-                );
                 mission.MissionStarted += (obj, _args) =>
                 {
                     Console.WriteLine($"Mars mission started with {mission.NumberOfRovers} rovers");
@@ -43,7 +39,7 @@ namespace Hb_mars_rover
                 //             break;
                 //     }
                 // };
-
+                mission.Start(new RoverVehicle("Opportunity"), new RoverVehicle("Curiosity"));
                 while (true)
                 {
                     try
