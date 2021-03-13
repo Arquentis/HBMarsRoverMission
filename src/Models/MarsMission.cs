@@ -11,7 +11,6 @@ namespace Hb_mars_rover
         public CommandState State => state;
         private int _roverIndex = 0;
         private RoverVehicle[] _rovers = null;
-        public int NumberOfRovers => this._rovers.Length;
 
         public event EventHandler RoverCommandExecuted;
         public event EventHandler BeforeRoverChanged;
@@ -23,9 +22,8 @@ namespace Hb_mars_rover
             _plateau = new MarsPlateau();
             _rovers = rovers;
             state = CommandState.SetPlateauCoordinates;
-            OnMissionStarted();
+            OnMissionStarted(new MissionStartedArgs(_rovers.Length));
         }
-
 
         private void NextState()
         {
@@ -45,7 +43,7 @@ namespace Hb_mars_rover
                     break;
             }
         }
-        
+
         private void SwitchToNextRover()
         {
             OnBeforeRoverChanged(new BeforeRoverChangedArgs(GetCurrentRover()));
@@ -136,6 +134,6 @@ namespace Hb_mars_rover
 
         protected virtual void OnRoverCommandExecuted(RoverCommandArgs e) => RoverCommandExecuted?.Invoke(this, e);
         protected virtual void OnBeforeRoverChanged(BeforeRoverChangedArgs e) => BeforeRoverChanged?.Invoke(this, e);
-        protected virtual void OnMissionStarted() => MissionStarted?.Invoke(this, null);
+        protected virtual void OnMissionStarted(MissionStartedArgs e) => MissionStarted?.Invoke(this, e);
     }
 }

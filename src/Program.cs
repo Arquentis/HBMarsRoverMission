@@ -12,7 +12,9 @@ namespace Hb_mars_rover
                 var mission = new MarsMission();
                 mission.MissionStarted += (obj, _args) =>
                 {
-                    Console.WriteLine($"Mars mission started with {mission.NumberOfRovers} rovers");
+                    if (_args == null) return;
+                    var data = (MissionStartedArgs)_args;
+                    Console.WriteLine($"Mars mission started with {data.NumberOfRovers} rovers");
                 };
                 mission.BeforeRoverChanged += (obj, _args) =>
                 {
