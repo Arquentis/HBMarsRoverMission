@@ -14,14 +14,14 @@ namespace Hb_mars_rover
                     new RoverVehicle("Opportunity"),
                     new RoverVehicle("Curiosity")
                 );
-                mission.MissionStarted += (obj, args) =>
+                mission.MissionStarted += (obj, _args) =>
                 {
                     Console.WriteLine($"Mars mission started with {mission.NumberOfRovers} rovers");
                 };
-                mission.BeforeRoverChanged += (obj, args) =>
+                mission.BeforeRoverChanged += (obj, _args) =>
                 {
-                    if (args == null) return;
-                    var data = (BeforeRoverChangedArgs)args;
+                    if (_args == null) return;
+                    var data = (BeforeRoverChangedArgs)_args;
                     Console.WriteLine($"{data.Rover.ToString()}");
                 };
                 // mission.RoverCommandExecuted += (obj, args) =>
