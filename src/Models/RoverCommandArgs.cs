@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace Hb_mars_rover
+namespace HBMarsMission.Models
 {
     public class RoverCommandArgs : EventArgs
     {

@@ -1,6 +1,6 @@
-using Hb_mars_rover.Extensions;
+﻿using HBMarsMission.Extensions;
 
-namespace Hb_mars_rover
+namespace HBMarsMission.Models
 {
     public class MarsPlateau
     {

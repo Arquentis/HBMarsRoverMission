@@ -1,8 +1,7 @@
+﻿using HBMarsMission.Extensions;
 using System;
-using System.Linq;
-using Hb_mars_rover.Extensions;
 
-namespace Hb_mars_rover
+namespace HBMarsMission.Models
 {
     public class MarsMission
     {

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using HBMarsMission.Models;
+using System;
 
-namespace Hb_mars_rover
+namespace HBMarsMission
 {
     class Program
     {

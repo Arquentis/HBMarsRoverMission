@@ -1,11 +1,9 @@
-
-
+﻿using HBMarsMission.Models;
 using System;
 using System.Linq;
 
-namespace Hb_mars_rover.Extensions
+namespace HBMarsMission.Extensions
 {
-
     public static class CommandStringExtensions
     {
         public static Coordinate ToCoordinate(this string command)

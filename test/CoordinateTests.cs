@@ -1,7 +1,7 @@
-using Hb_mars_rover;
+using HBMarsMission.Models;
 using Xunit;
 
-namespace HbMarsRoverTests
+namespace HBMarsMissionTest
 {
     public class CoordinateTests
     {

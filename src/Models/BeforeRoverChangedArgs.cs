@@ -1,6 +1,8 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Hb_mars_rover
+namespace HBMarsMission.Models
 {
     public class BeforeRoverChangedArgs : EventArgs
     {

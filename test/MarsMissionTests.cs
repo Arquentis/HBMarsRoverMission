@@ -1,7 +1,7 @@
-using Hb_mars_rover;
+﻿using HBMarsMission.Models;
 using Xunit;
 
-namespace HbMarsRoverTests
+namespace HBMarsMissionTest
 {
     public class MarsMissionTests
     {
@@ -94,7 +94,7 @@ namespace HbMarsRoverTests
             Assert.Equal(0, myRover.Rotation.Degree);
             Assert.Equal("Test - 4 5 N", myRover.ToString());
         }
-        
+
         [Fact]
         public void MarsMission_Should_Complete()
         {

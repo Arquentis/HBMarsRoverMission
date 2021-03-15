@@ -1,4 +1,4 @@
-namespace Hb_mars_rover
+﻿namespace HBMarsMission.Models
 {
     public struct Coordinate
     {
