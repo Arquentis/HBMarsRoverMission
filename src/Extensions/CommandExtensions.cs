@@ -19,15 +19,13 @@ namespace HBMarsMission.Extensions
         {
             return command.Select(c =>
             {
-                switch (c)
+                var parameter = c.ToString().ToUpper();
+                switch (parameter)
                 {
-                    case 'L':
-                    case 'l':
-                    case 'R':
-                    case 'r':
-                        return new RoverCommand(CommandType.Rotate, c.ToString());
-                    case 'M': 
-                    case 'm':  
+                    case "L":
+                    case "R":
+                        return new RoverCommand(CommandType.Rotate, parameter);
+                    case "M": 
                         return new RoverCommand(CommandType.Move);
                     default:
                         throw new ArgumentException("Invalid command parameter");

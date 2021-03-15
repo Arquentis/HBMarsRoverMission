@@ -145,7 +145,7 @@ namespace HBMarsMissionTest
             // Arrange
 
             // Act
-            var rotation = Rotation.GetRotation("S");
+            var rotation = Rotation.GetRotation("W");
 
             // Assert
             Assert.Equal(270, rotation.Degree);
