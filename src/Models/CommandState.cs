@@ -5,6 +5,6 @@ namespace Hb_mars_rover
         NotInit = 0,
         SetPlateauCoordinates,
         SetRoverPosition,
-        RunRoverCommand,
+        MoveRover,
     }
 }

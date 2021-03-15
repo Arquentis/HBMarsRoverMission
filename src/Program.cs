@@ -46,18 +46,16 @@ namespace Hb_mars_rover
                 {
                     try
                     {
-                        RoverVehicle currentRover = null;
+                        RoverVehicle currentRover = mission.State != CommandState.NotInit ? mission.GetCurrentRover() : null;
                         switch (mission.State)
                         {
                             case CommandState.SetPlateauCoordinates:
                                 Console.WriteLine("Please enter plataeu coords. (eg -> 5 5):");
                                 break;
                             case CommandState.SetRoverPosition:
-                                currentRover = mission.GetCurrentRover();
                                 Console.WriteLine($"Please enter initial coords and rotation for rover {currentRover.Name}. (eg -> 1 1 N)");
                                 break;
-                            case CommandState.RunRoverCommand:
-                                currentRover = mission.GetCurrentRover();
+                            case CommandState.MoveRover:
                                 Console.WriteLine($"Please enter command to move rover {currentRover.Name}. (L: left, R: right, M: move)");
                                 break;
                             default:

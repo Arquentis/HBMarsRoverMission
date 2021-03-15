@@ -9,6 +9,7 @@ namespace Hb_mars_rover
         private MarsPlateau _plateau = null;
         private CommandState state = CommandState.NotInit;
         public CommandState State => state;
+        public MarsPlateau Plateau => _plateau;
         private int _roverIndex = 0;
         private RoverVehicle[] _rovers = null;
 
@@ -32,12 +33,12 @@ namespace Hb_mars_rover
                 case CommandState.SetPlateauCoordinates:
                     state = CommandState.SetRoverPosition;
                     break;
-                case CommandState.RunRoverCommand:
+                case CommandState.MoveRover:
                     state = CommandState.SetRoverPosition;
                     SwitchToNextRover();
                     break;
                 case CommandState.SetRoverPosition:
-                    state = CommandState.RunRoverCommand;
+                    state = CommandState.MoveRover;
                     break;
                 default:
                     break;
@@ -79,7 +80,7 @@ namespace Hb_mars_rover
             OnRoverCommandExecuted(new RoverCommandArgs(CommandType.SetPosition, rover));
         }
 
-        private void RunRoverCommand(string command)
+        private void MoveRover(string command)
         {
             if (string.IsNullOrEmpty(command)) throw new ArgumentException($"Invalid Command: {command}");
             var listOfCommands = command.Trim().ParseCommands();
@@ -122,8 +123,8 @@ namespace Hb_mars_rover
                 case CommandState.SetRoverPosition:
                     SetRoverPosition(command);
                     break;
-                case CommandState.RunRoverCommand:
-                    RunRoverCommand(command);
+                case CommandState.MoveRover:
+                    MoveRover(command);
                     break;
                 default:
                     throw new ArgumentException("Invalid State");

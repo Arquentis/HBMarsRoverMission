@@ -5,6 +5,7 @@ namespace Hb_mars_rover
     public class MarsPlateau
     {
         private Coordinate _coordinate = new Coordinate();
+        public Coordinate Coordinate => _coordinate;
 
         public MarsPlateau SetInitialCoords(Coordinate coordinate)
         {

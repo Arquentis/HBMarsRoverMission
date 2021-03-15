@@ -107,5 +107,18 @@ namespace HbMarsRoverTests
             Assert.Equal(1, myRover.Coordinate.X);
             Assert.Equal($"{myRover.Name} - 1 0 E", myRover.ToString());
         }
+
+        [Fact]
+        public void Rover_Should_Crash()
+        {
+            // Arrange
+            var myRover = new RoverVehicle();
+
+            // Act
+            myRover.Crash();
+
+            // Assert
+            Assert.Equal(true, myRover.IsCrashed);
+        }
     }
 }
