@@ -69,7 +69,7 @@ namespace HBMarsMission
                         }
                         else
                         {
-                            mission.ExecuteCommand(command);
+                            mission.ExecuteCommand(command);//test
                         }
                     }
                     catch (MissionOverException)
